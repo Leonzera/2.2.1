@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -25,5 +26,18 @@ public class UserServiceImp implements UserService {
    public List<User> listUsers() {
       return userDao.listUsers();
    }
+
+   @Transactional
+   @Override
+   public void deleteUserById(long id) {
+      userDao.deleteUserById(id);
+   }
+
+   @Transactional
+   @Override
+   public Optional<User> getUserByCar(String model, int series) {
+      return userDao.getUserByCar(model, series);
+   }
+
 
 }
